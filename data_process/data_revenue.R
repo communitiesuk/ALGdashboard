@@ -108,7 +108,24 @@ lgf_vars <- c("RS_NCE_ChildrenSocialCare_adj2",
                 "RG_inAEF_other",
                 "RG_outAEF_other",
                 "RS_Other_COVID_add_bsns_res",
-              "RS_NCE_Educationservices_adj2")
+              "RS_NCE_Educationservices_adj2",
+              "RS_Other_NNDRsd",
+              "RS_Other_GeneralGLAGrant",
+              "RS_Other_AreaBasedGrantABG",
+              "RS_Other_CovidunringFunding",
+              "RS_Other_Salesfeesandchargescomp",
+              "RS_Other_Tax_Income_Guarantee",
+              "RS_Other_LCTS_grant",
+              "RS_Other_Ratesbroughtforward_2",
+              "RS_Other_expanded_brr_relief",
+              "RS_Other_RedistributedNonDomes",
+              "RG_inAEF_GLAtrans",
+              "RG_inAEF_covidwintersupport",
+              "RG_inAEF_COMFund",
+              "RG_inAEF_WorkforceRRfund",
+              "RG_inAEF_ASomicron",
+              "RG_inAEF_WBFund"
+              )
                 
                 
                 
