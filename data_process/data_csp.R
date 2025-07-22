@@ -15,11 +15,14 @@ FYstart <- c("2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "20
 
 # Clean the CSP data so we only keep variables relevant to ASC funding and CSP overall. Use the remove_all_but_final_underscore function to clean names so that we can easily pivot longer. Ensure that all variables (bar ID ones) are numeric. Pivot longer into a format we are happy with, and then remove England level summary numbers. We also want to remove the columns ascdelayedreform (constituent part of SCG in 2024), ascgrant (constituent part of SCG in 2022) and asceq (constituent part of SCG in 2022) as they are not consistently reported and are constituent parts of funds. 
 csp <- csp_data %>%
-  dplyr::select(contains(c('ons', 'authority', 'ecode', 'ibcf', 'winter', 'scsg', 'ascsg', 'scg', 'asc', 'better')), all_of(CSP_sheets)) %>% rename_with(~ sapply(.x, remove_all_but_final_underscore)) %>%
-  mutate_at(-c(1:3), as.numeric) %>% 
+  dplyr::select(contains(c('ons', 'authority', 'ecode', 'ibcf', 'winter', 'scsg', 'ascsg', 'scg', 'asc', 'better', 'ltsg', 'rolled', 'ct', 'rsdg', 'sfa', 'under', 'nhb', 'NIC', 'tg', 'cyps', 'services')), all_of(CSP_sheets)) %>% 
+  rename_with(~ str_replace(., "sfa_(\\d{4})_tot", "sfa_tot_\\1")) %>%
+  rename_with(~ sapply(.x, remove_all_but_final_underscore)) %>%
+  mutate_at(-c(1:5), as.numeric) %>% 
   pivot_longer(cols=ends_with(c(FYstart)), names_to= c(".value", "year"), names_sep="_") %>%
   filter(ecode!="TE") %>%
   dplyr::select(-c(ascdelayedreform, ascgrant, asceq))
+
 # Put the years into a consistent format 
 csp <- csp %>%
   mutate(year = as.numeric(year),
